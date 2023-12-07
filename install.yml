@@ -1,0 +1,15 @@
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates Ubuntu
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+- hosts: Ubuntu
+  become: true
+  roles:
+    - Ubuntu
+
